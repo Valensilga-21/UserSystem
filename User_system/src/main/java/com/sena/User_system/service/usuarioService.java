@@ -49,7 +49,7 @@ public class usuarioService implements IUsuarioService{
 	}
 	
 	@Override
-    public Optional<usuario> findBycorreo(String correo) {
-        return data.findBycorreo(correo);
+    public Optional<usuario> findBycorreoElectronico(String correo) {
+        return data.findBycorreoElectronico(correo);
     }
 }

@@ -11,5 +11,5 @@ public interface IUsuarioService {
 	public List<usuario> findAll();
 	public Optional<usuario> findOne(String id_usuario);
 	public int delete(String id_usuario);
-	public Optional<usuario> findBycorreo(String correo);
+	public Optional<usuario> findBycorreoElectronico(String correo);
 }

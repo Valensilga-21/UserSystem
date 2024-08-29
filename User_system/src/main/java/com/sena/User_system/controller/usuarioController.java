@@ -3,7 +3,6 @@ package com.sena.User_system.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +18,6 @@ import com.sena.User_system.service.emailService;
 
 @RequestMapping("/api/v1/usuario")
 @RestController
-@CrossOrigin
 public class usuarioController {
 	
 	@Autowired
@@ -56,7 +54,7 @@ public class usuarioController {
             return new ResponseEntity<>("El correo es un campo obligatorio", HttpStatus.BAD_REQUEST);
         }
         
-        if (usuario.getContraseña().equals("")) {
+        if (usuario.getContrasena().equals("")) {
             
             return new ResponseEntity<>("La contraseña es un campo obligatorio", HttpStatus.BAD_REQUEST);
         }
@@ -81,7 +79,7 @@ public class usuarioController {
         }
         
         //VERIFICA SI EL CORREO ELECTRONICO YA SÉ ENCUENTRA EN NUESTRA BASE DE DATOS
-        if (usuarioService.findBycorreo(usuario.getCorreo()).isPresent()) {
+        if (usuarioService.findBycorreoElectronico(usuario.getCorreo()).isPresent()) {
             return new ResponseEntity<>("El correo electrónico ya está registrado", HttpStatus.BAD_REQUEST);
         }
         
@@ -105,7 +103,7 @@ public class usuarioController {
 	
 	@GetMapping("/existsBycorreoElectronico/{correo}")
     public ResponseEntity<Boolean> existsBycorreoElectronico(@PathVariable String correo) {
-        boolean exists = usuarioService.findBycorreo(correo).isPresent();
+        boolean exists = usuarioService.findBycorreoElectronico(correo).isPresent();
         return new ResponseEntity<>(exists, HttpStatus.OK);
     }
 	
@@ -131,7 +129,7 @@ public class usuarioController {
 			usuario.setNumero_doc(usuarioUpdate.getNumero_doc());
 			usuario.setFecha_nac(usuarioUpdate.getFecha_nac());
 			usuario.setCorreo(usuarioUpdate.getCorreo());
-			usuario.setContraseña(usuarioUpdate.getContraseña());
+			usuario.setContrasena(usuarioUpdate.getContrasena());
 			usuario.setFecha_actualizacion(usuarioUpdate.getFecha_actualizacion());
 			usuario.setFecha_inicio_sesion(usuarioUpdate.getFecha_inicio_sesion());
 			usuario.setCampo_notificacion(usuarioUpdate.isCampo_notificacion());

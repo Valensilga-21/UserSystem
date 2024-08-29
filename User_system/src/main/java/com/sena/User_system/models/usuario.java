@@ -31,8 +31,8 @@ public class usuario {
 	@Column(name = "correo", nullable= false, length = 256)
 	private String correo;
 	
-	@Column(name = "contraseña", nullable= false, length = 25)
-	private String contraseña;
+	@Column(name = "contrasena", nullable= false, length = 25)
+	private String contrasena;
 	
 	@Column(name = "fecha_actualizacion", nullable= false, length = 50)
 	private Date fecha_actualizacion;
@@ -47,20 +47,18 @@ public class usuario {
 	private String estado;
 
 	public usuario() {
-		super();
 	}
 
 	public usuario(String id_usuario, String nombre_completo, String tipo_doc, int numero_doc, Date fecha_nac,
-			String correo, String contraseña, Date fecha_actualizacion, Date fecha_inicio_sesion,
+			String correo, String contrasena, Date fecha_actualizacion, Date fecha_inicio_sesion,
 			boolean campo_notificacion, String estado) {
-		super();
 		this.id_usuario = id_usuario;
 		this.nombre_completo = nombre_completo;
 		this.tipo_doc = tipo_doc;
 		this.numero_doc = numero_doc;
 		this.fecha_nac = fecha_nac;
 		this.correo = correo;
-		this.contraseña = contraseña;
+		this.contrasena = contrasena;
 		this.fecha_actualizacion = fecha_actualizacion;
 		this.fecha_inicio_sesion = fecha_inicio_sesion;
 		this.campo_notificacion = campo_notificacion;
@@ -115,12 +113,12 @@ public class usuario {
 		this.correo = correo;
 	}
 
-	public String getContraseña() {
-		return contraseña;
+	public String getContrasena() {
+		return contrasena;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 
 	public Date getFecha_actualizacion() {

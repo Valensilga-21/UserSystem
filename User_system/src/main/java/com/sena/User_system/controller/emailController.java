@@ -30,7 +30,7 @@ public class emailController {
         
             var retorno=enviarCorreo(destinatario,asunto,cuerpo);
             if(retorno) {
-                return "se envió correctamente";
+                return "Se envió correctamente";
             }else {
                     return "No se pudo envíar";
             }
@@ -58,3 +58,4 @@ public class emailController {
 		
 	}
 }
+

@@ -12,6 +12,6 @@ import com.sena.User_system.models.usuario;
 public interface IUsuario extends CrudRepository<usuario,String>{
 	
 	@Query("SELECT u FROM usuario u WHERE u.correo = ?1")
-	Optional<usuario> findBycorreo(String correo);
+	Optional<usuario> findBycorreoElectronico(String correo);
 
 }
