@@ -15,13 +15,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sena.User_system.IService.IUsuarioService;
 import com.sena.User_system.models.usuario;
+import com.sena.User_system.service.emailService;
 
 @RequestMapping("/api/v1/usuario")
 @RestController
 @CrossOrigin
 public class usuarioController {
+	
 	@Autowired
 	private IUsuarioService usuarioService;
+
+	@Autowired
+    private emailService emailService;
 	
 	@PostMapping("/")
     public ResponseEntity<Object> save(@RequestBody usuario usuario) {
@@ -75,7 +80,13 @@ public class usuarioController {
             return new ResponseEntity<>("La fecha de actualizacion es un campo obligatorio", HttpStatus.BAD_REQUEST);
         }
         
+        //VERIFICA SI EL CORREO ELECTRONICO YA SÉ ENCUENTRA EN NUESTRA BASE DE DATOS
+        if (usuarioService.findBycorreo(usuario.getCorreo()).isPresent()) {
+            return new ResponseEntity<>("El correo electrónico ya está registrado", HttpStatus.BAD_REQUEST);
+        }
+        
         usuarioService.save(usuario);
+        emailService.enviarCorreoBienvenida(usuario.getCorreo(), usuario.getNombre_completo());
         return new ResponseEntity<>(usuario, HttpStatus.OK);
 
     }
@@ -91,6 +102,12 @@ public class usuarioController {
 		var usuario=usuarioService.findOne(id_usuario);
 		return new ResponseEntity<>(usuario,HttpStatus.OK);
 	}
+	
+	@GetMapping("/existsBycorreoElectronico/{correo}")
+    public ResponseEntity<Boolean> existsBycorreoElectronico(@PathVariable String correo) {
+        boolean exists = usuarioService.findBycorreo(correo).isPresent();
+        return new ResponseEntity<>(exists, HttpStatus.OK);
+    }
 	
 	/*
 	@GetMapping("/busqueda/{filtro}")
