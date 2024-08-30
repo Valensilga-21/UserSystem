@@ -40,9 +40,6 @@ public class usuario {
 	@Column(name = "fecha_inicio_sesion", nullable= false, length = 50)
 	private Date fecha_inicio_sesion;
 	
-	@Column(name = "campo_notificacion", nullable= false, length = 25)
-	private boolean campo_notificacion;
-	
 	@Column(name = "estado", nullable= false, length = 10)
 	private String estado;
 
@@ -50,8 +47,7 @@ public class usuario {
 	}
 
 	public usuario(String id_usuario, String nombre_completo, String tipo_doc, int numero_doc, Date fecha_nac,
-			String correo, String contrasena, Date fecha_actualizacion, Date fecha_inicio_sesion,
-			boolean campo_notificacion, String estado) {
+			String correo, String contrasena, Date fecha_actualizacion, Date fecha_inicio_sesion, String estado) {
 		this.id_usuario = id_usuario;
 		this.nombre_completo = nombre_completo;
 		this.tipo_doc = tipo_doc;
@@ -61,7 +57,6 @@ public class usuario {
 		this.contrasena = contrasena;
 		this.fecha_actualizacion = fecha_actualizacion;
 		this.fecha_inicio_sesion = fecha_inicio_sesion;
-		this.campo_notificacion = campo_notificacion;
 		this.estado = estado;
 	}
 
@@ -135,14 +130,6 @@ public class usuario {
 
 	public void setFecha_inicio_sesion(Date fecha_inicio_sesion) {
 		this.fecha_inicio_sesion = fecha_inicio_sesion;
-	}
-
-	public boolean isCampo_notificacion() {
-		return campo_notificacion;
-	}
-
-	public void setCampo_notificacion(boolean campo_notificacion) {
-		this.campo_notificacion = campo_notificacion;
 	}
 
 	public String getEstado() {

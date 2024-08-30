@@ -21,9 +21,9 @@ import com.sena.User_system.service.emailService;
 public class usuarioController {
 	
 	@Autowired
-	private IUsuarioService usuarioService;
+    private IUsuarioService usuarioService;
 
-	@Autowired
+    @Autowired
     private emailService emailService;
 	
 	@PostMapping("/")
@@ -69,10 +69,6 @@ public class usuarioController {
             return new ResponseEntity<>("La fecha de actualizacion es un campo obligatorio", HttpStatus.BAD_REQUEST);
         }
         
-        if (!usuario.isCampo_notificacion()) {
-            return new ResponseEntity<>("La notificacion es un campo obligatorio", HttpStatus.BAD_REQUEST);
-        }
-        
         if (usuario.getEstado().equals("")) {
             
             return new ResponseEntity<>("La fecha de actualizacion es un campo obligatorio", HttpStatus.BAD_REQUEST);
@@ -84,7 +80,7 @@ public class usuarioController {
         }
         
         usuarioService.save(usuario);
-        emailService.enviarCorreoBienvenida(usuario.getCorreo(), usuario.getNombre_completo());
+        emailService.enviarCorreoBienvenida(usuario.getCorreo());
         return new ResponseEntity<>(usuario, HttpStatus.OK);
 
     }
@@ -132,7 +128,6 @@ public class usuarioController {
 			usuario.setContrasena(usuarioUpdate.getContrasena());
 			usuario.setFecha_actualizacion(usuarioUpdate.getFecha_actualizacion());
 			usuario.setFecha_inicio_sesion(usuarioUpdate.getFecha_inicio_sesion());
-			usuario.setCampo_notificacion(usuarioUpdate.isCampo_notificacion());
 			usuario.setEstado(usuarioUpdate.getEstado());
 
 			usuarioService.save(usuario);
