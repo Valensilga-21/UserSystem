@@ -16,21 +16,23 @@ public class emailService {
 
     public String enviarCorreoBienvenida(String destinatario){
         try{
-            String asunto = "¡Bienvenid@ a LaMafia!";
+            String asunto = "¡Hola!";
             String cuerpo = ""
-                + "<body style=\"font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;\">\r\n"
-                + "<div style=\"max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\">\r\n"
-                + "  <h1 style=\"font-size: 24px; font-weight: bold; color: #333333;\">¡Hola!</h1>\r\n"
-                + "  <p style=\"font-size: 16px; color: #555555;\">Estamos emocionados de darte la bienvenida a LaMafia.</p>\r\n"
-                + "  <p style=\"font-size: 16px; color: #555555;\">Nuestra plataforma está diseñada para ofrecerte la mejor experiencia posible con la droga.</p>\r\n"
-                + "  <p style=\"font-size: 16px; color: #555555;\">No dudes en explorar todas las funciones y contactarnos si necesitas mas drogas.</p>\r\n"
-                + "</div>\r\n"
-                + "<div style=\"text-align: center; margin-top: 20px;\">\r\n"
-                + "  <a href=\"#\" style=\"font-size: 14px; color: #888888; text-decoration: none;\">Términos y condiciones</a> | \r\n"
-                + "  <a href=\"#\" style=\"font-size: 14px; color: #888888; text-decoration: none;\">Política de privacidad</a>\r\n"
-                + "</div>\r\n"
-                + "</body>";
-
+            + "<body"
+            + "<div class=\"container-fluid py-4\" style=\"width: 75rem;\">\r\n"
+            + "  <h1 class=\"display-5 fw-bold\">Bienvenid@ a nuestra plataforma</h1>\r\n"
+            + "  <p class=\"col-md-8 fs-4\">Nos alegra que estés aquí, nuestra plataforma está diseña para ofrecerte múltiples experiencias. \r\n"
+            + "  Síguenos en nuestras redes sociales y disfruta de los servicios que tenemos para ti.</p>\r\n"
+            + "  <ul class=\"nav col-md-5 justify-content-start list-unstyled d-flex\">\r\n"
+            + "    <li class=\"ms-3\"><box-icon name='facebook' type='logo'></box-icon></li>\r\n"
+            + "    <li class=\"ms-3\"><box-icon name='instagram' type='logo'></box-icon></li>\r\n"
+            + "    <li class=\"ms-3\"><box-icon name='twitter' type='logo'></box-icon></li>\r\n"
+            + "  </ul>\r\n"
+            + "</div>\r\n"
+            + "</div>\r\n"
+            + "<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>"
+            + "<script src=\"https://unpkg.com/boxicons@2.1.4/dist/boxicons.js\"></script>\r\n"
+            + "</body>";
             
 
             var retorno=enviarCorreo(destinatario,asunto,cuerpo);
