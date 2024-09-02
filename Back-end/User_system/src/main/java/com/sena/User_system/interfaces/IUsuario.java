@@ -17,8 +17,8 @@ public interface IUsuario extends CrudRepository<usuario,String>{
     List<usuario> cambiarTipoDocumento();
 
 	@Query("SELECT u FROM usuario u WHERE  DATEDIFF(NOW(), u.fecha_actualizacion) >= 90")
-    List<usuario> enviarCorreoCambiarContra(String enviarCorreoCambiarContra);
+    List<usuario> enviarCorreoCambiarContra();
 	
 	@Query("SELECT u FROM usuario u WHERE  DATEDIFF(NOW(), u.fecha_inicio_sesion) >= 30")
-    List<usuario> iniciosesionNotificar(String iniciosesionNotificar);
+    List<usuario> iniciosesionNotificar();
 }

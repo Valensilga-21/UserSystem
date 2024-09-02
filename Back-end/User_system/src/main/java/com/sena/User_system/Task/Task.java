@@ -30,7 +30,7 @@ public class Task {
         }
     }
     
-    @Scheduled(cron = "0 0/30 * * * *")
+    @Scheduled(cron = "12 13 * * * *")
     public void sendPasswordExpirationNotifications() {
         var ListaUsuario = data.enviarCorreoCambiarContra();
         for (usuario usuario : ListaUsuario) {
@@ -40,14 +40,14 @@ public class Task {
         }
     }
     
-    @Scheduled(cron = "0 0 0 * * 0") // ejecutar cada domingo a las 12:00 AM
+    @Scheduled(cron = "0 0 0 * * 0")
     public void blockInactiveUsers() {
-    List<usuario> inactiveUsers = data.iniciosesionNotificar(null);
+    List<usuario> inactiveUsers = data.iniciosesionNotificar();
     for (usuario usuario : inactiveUsers) {
         System.out.println("usuario inactivo: " + usuario.getNombre_completo());
         usuario.setEstado("INACTIVO");
-        data.usuarioUpdate(usuario);
-        email.iniciosesionNotificar(usuario);
+        data.save(usuario);
+        email.iniciosesionNotificar(usuario.getCorreo());
     	}
     }
 }

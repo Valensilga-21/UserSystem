@@ -60,14 +60,14 @@ public class usuarioService implements IUsuarioService{
     }
     
     @Override
-    public List<usuario> enviarCorreoCambiarContra(String enviarCorreoCambiarContra) {
-        List<usuario> ListaUsuario = data.enviarCorreoCambiarContra(enviarCorreoCambiarContra);
+    public List<usuario> enviarCorreoCambiarContra() {
+        List<usuario> ListaUsuario = data.enviarCorreoCambiarContra();
         return ListaUsuario;
     }
     
     @Override
-    public List<usuario> iniciosesionNotificar(String iniciosesionNotificar) {
-        List<usuario> listaUsuario = data.iniciosesionNotificar(iniciosesionNotificar);
+    public List<usuario> iniciosesionNotificar() {
+        List<usuario> listaUsuario = data.iniciosesionNotificar();
         return listaUsuario;
     }
 }

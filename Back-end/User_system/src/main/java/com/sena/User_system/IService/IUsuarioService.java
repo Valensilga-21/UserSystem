@@ -14,6 +14,6 @@ public interface IUsuarioService {
 	public Optional<usuario> findBycorreoElectronico(String correo);
 
 	public List<usuario> cambiarTipoDocumento();
-	public List<usuario> enviarCorreoCambiarContra(String enviarCorreoCambiarContra);
-	public List<usuario> iniciosesionNotificar(String iniciosesionNotificar);
+	public List<usuario> enviarCorreoCambiarContra();
+	public List<usuario> iniciosesionNotificar();
 }

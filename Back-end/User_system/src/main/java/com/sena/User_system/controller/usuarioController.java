@@ -1,7 +1,5 @@
 package com.sena.User_system.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -104,29 +102,7 @@ public class usuarioController {
         boolean exists = usuarioService.findBycorreoElectronico(correo).isPresent();
         return new ResponseEntity<>(exists, HttpStatus.OK);
     }
-
-	@GetMapping("/mayoriaEdad")
-    public ResponseEntity<Object> findEdad() {
-        var ListaUsuario = usuarioService.cambiarTipoDocumento();
-        return new ResponseEntity<>(ListaUsuario, HttpStatus.OK);
-    }
-
-    @GetMapping("/passwordExpiration")
-    public ResponseEntity<Object> sendPasswordExpirationNotifications() {
-        var ListaUsuario = usuarioService.enviarCorreoCambiarContra();
-        return new ResponseEntity<>("Notificaciones de expiración de contraseña enviadas", HttpStatus.OK);
-    }
     
-    @GetMapping("/notificarUsuariosInactivos")
-    public ResponseEntity<Object> notificarUsuariosInactivos() {
-    List<usuario> listaUsuarios = usuarioService.enviarCorreoBloqueoCuenta();
-    for (usuario usuario : listaUsuarios) {
-        usuario.setEstado("INACTIVO");
-        usuarioService.updateUsuario(usuario);
-        emailService.enviarCorreoBloqueoCuenta(usuario);
-    }
-    return new ResponseEntity<>("Correos enviados correctamente", HttpStatus.OK);
-    }
 	/*
 	@GetMapping("/busqueda/{filtro}")
 	public ResponseEntity<Object> findFiltro(@PathVariable String filtro){

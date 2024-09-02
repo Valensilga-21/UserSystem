@@ -126,7 +126,7 @@ public class emailService {
             + "</html>";
             
 
-            var retorno=enviarCorreo(usuario,asunto,cuerpo);
+            var retorno=enviarCorreo(usuario.getCorreo(),asunto,cuerpo);
             if(retorno) {
                 return "se envió correctamente";
             }else {
@@ -188,7 +188,7 @@ public class emailService {
 			MimeMessage message=javaMailSender.createMimeMessage();
 			MimeMessageHelper helper=new MimeMessageHelper(message,true);
 			
-			helper.setSubject("gonzalezcalderonmariana@gmail.com");
+			helper.setTo(destinatario);
 			helper.setSubject(asunto);
 			helper.setText(cuerpo,true);
 			
