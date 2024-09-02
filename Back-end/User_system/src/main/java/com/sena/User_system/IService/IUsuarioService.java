@@ -12,4 +12,8 @@ public interface IUsuarioService {
 	public Optional<usuario> findOne(String id_usuario);
 	public int delete(String id_usuario);
 	public Optional<usuario> findBycorreoElectronico(String correo);
+
+	public List<usuario> cambiarTipoDocumento();
+	public List<usuario> enviarCorreoCambiarContra(String enviarCorreoCambiarContra);
+	public List<usuario> iniciosesionNotificar(String iniciosesionNotificar);
 }

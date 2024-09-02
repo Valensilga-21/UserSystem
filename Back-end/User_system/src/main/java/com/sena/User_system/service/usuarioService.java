@@ -52,4 +52,22 @@ public class usuarioService implements IUsuarioService{
     public Optional<usuario> findBycorreoElectronico(String correo) {
         return data.findBycorreoElectronico(correo);
     }
+
+	@Override
+    public List<usuario> cambiarTipoDocumento() {
+        List<usuario> ListaUsuario = data.cambiarTipoDocumento();
+        return ListaUsuario;
+    }
+    
+    @Override
+    public List<usuario> enviarCorreoCambiarContra(String enviarCorreoCambiarContra) {
+        List<usuario> ListaUsuario = data.enviarCorreoCambiarContra(enviarCorreoCambiarContra);
+        return ListaUsuario;
+    }
+    
+    @Override
+    public List<usuario> iniciosesionNotificar(String iniciosesionNotificar) {
+        List<usuario> listaUsuario = data.iniciosesionNotificar(iniciosesionNotificar);
+        return listaUsuario;
+    }
 }
